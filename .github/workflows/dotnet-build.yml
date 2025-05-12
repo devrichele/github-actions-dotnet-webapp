@@ -10,7 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout do código
         uses: actions/checkout@v3
@@ -18,10 +17,11 @@ jobs:
       - name: Instalar .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x' # ou versão que estiver usando
+          dotnet-version: '8.0.x'
 
-      - name: Restaurar dependências
-        run: dotnet restore
+      - name: Restaurar pacotes
+        run: dotnet restore github4women/github4women.csproj
 
-      - name: Compilar a aplicação
-        run: dotnet build --no-restore
+      - name: Compilar aplicação
+        run: dotnet build github4women/github4women.csproj --no-restore
+
